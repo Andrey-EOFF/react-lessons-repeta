@@ -1,0 +1,26 @@
+.ColorPicker {
+    font-family: Arial, sans-serif;
+    padding: 16px;
+    border: 2px solid black;
+  }
+  
+  .ColorPicker__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .ColorPicker__option {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+  }
+
+  .ColorPicker__option--active {
+    transform: scale(1.3);
+  }
+  
