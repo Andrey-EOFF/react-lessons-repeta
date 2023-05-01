@@ -1,0 +1,24 @@
+
+.Counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    background-color: blue;
+    width: 500px;
+    height: 100px;
+    padding: 30px;
+  }
+  
+  .Counter__value {
+    font-size: 150px;
+    font-weight: bold;
+    margin-bottom: 50px;
+  }
+  
+  .Counter__controls {
+    display: flex;
+    background-color: brown;
+    gap: 10px;
+  }
+  
