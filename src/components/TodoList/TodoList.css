@@ -1,8 +1,18 @@
 
-/* .TodoList {
-
-} */
+.TodoList {
+width: 500px;
+}
 
 .TodoList__item {
  display: flex;
+ align-items: center;
+ justify-content: space-between;
+ border: 2px solid black;
+ margin-bottom: 5px;
+ padding: 10px;
+}
+
+.TodoList__text {
+    margin-top: 10px;
+    margin-right: 10px;
 }
