@@ -8,6 +8,7 @@ import TodoList from "./components/TodoList";
 import initialTodos from "./todos.json";
 import TodoEditor from "./components/TodoEditor/TodoEditor";
 import Filter from "./components/TodoEditor/FilterTodo";
+import LoginForm from "./components/LoginForm/LoginForm";
 
 // const colorPickerOptions = [
 //   { label: "red", color: "#F44336" },
@@ -94,6 +95,9 @@ class App extends Component {
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
         />
+
+       <LoginForm />
+
       </>
     );
   }
