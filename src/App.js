@@ -62,7 +62,19 @@ class App extends Component {
     this.setState({ filter: e.currentTarget.value });
   };
 
+  componentDidMount() {
+    console.log("App componentDidMount");
+  }
+
+  componentDidUpdate() {
+    console.log("App componentDidUpdate");
+  }
+  componentWillUnmount() {
+    console.log("App componentWillUnmount");
+  }
+
   render() {
+    console.log("App render");
     const { todos, filter } = this.state;
     const totalTodoCount = todos.length;
 
@@ -96,8 +108,7 @@ class App extends Component {
           onToggleCompleted={this.toggleCompleted}
         />
 
-       <LoginForm />
-
+        <LoginForm />
       </>
     );
   }
