@@ -9,6 +9,7 @@ import initialTodos from "./todos.json";
 import TodoEditor from "./components/TodoEditor/TodoEditor";
 import Filter from "./components/TodoEditor/FilterTodo";
 import LoginForm from "./components/LoginForm/LoginForm";
+import Modal from './components/Modal/Modal'
 
 // const colorPickerOptions = [
 //   { label: "red", color: "#F44336" },
@@ -62,17 +63,27 @@ class App extends Component {
     this.setState({ filter: e.currentTarget.value });
   };
 
+  // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   componentDidMount() {
-    console.log("App componentDidMount");
+    const todos = localStorage.getItem("todos");
+    const parsedTodos = JSON.parse(todos);
+
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
   }
 
-  componentDidUpdate() {
-    console.log("App componentDidUpdate");
-  }
-  componentWillUnmount() {
-    console.log("App componentWillUnmount");
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.todos !== prevState.todos) {
+    }
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
   }
 
+  // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   render() {
     console.log("App render");
     const { todos, filter } = this.state;
@@ -109,6 +120,8 @@ class App extends Component {
         />
 
         <LoginForm />
+
+        <Modal />
       </>
     );
   }
