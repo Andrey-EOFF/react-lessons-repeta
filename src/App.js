@@ -1,15 +1,19 @@
 import React, { Component } from "react";
-import shortid from "shortid";
+// import shortid from "shortid";
 // import Counter from "./components/Counter";
 // import DropDown from "./components/DropDown/DropDown";
 // import "./index.css";
 // import ColorPicker from "./components/ColorPicker/ColorPicker";
-import TodoList from "./components/TodoList";
-import initialTodos from "./todos.json";
-import TodoEditor from "./components/TodoEditor/TodoEditor";
-import Filter from "./components/TodoEditor/FilterTodo";
-import LoginForm from "./components/LoginForm/LoginForm";
-import Modal from './components/Modal/Modal'
+// import TodoList from "./components/TodoList";
+// import initialTodos from "./todos.json";
+// import TodoEditor from "./components/TodoEditor/TodoEditor";
+// import Filter from "./components/TodoEditor/FilterTodo";
+// import LoginForm from "./components/LoginForm/LoginForm";
+// import Modal from './components/Modal/Modal'
+
+import { Player } from './components/Player/Player';
+import videos from './components/videos.json';
+import { VideoList } from './components/VideoList/VideoList'
 
 // const colorPickerOptions = [
 //   { label: "red", color: "#F44336" },
@@ -21,83 +25,91 @@ import Modal from './components/Modal/Modal'
 // ];
 
 class App extends Component {
+  // state = {
+  //   todos: initialTodos,
+  //   filter: "",
+  // };
+
   state = {
-    todos: initialTodos,
-    filter: "",
+    selectedVideo: null,
   };
 
-  addTodo = (text) => {
-    const todo = {
-      id: shortid.generate(),
-      text,
-      completed: false,
-    };
-
-    this.setState((prevState) => ({
-      todos: [todo, ...prevState.todos],
-    }));
+  selectVideo = link => {
+    this.setState({ selectedVideo: link });
   };
 
-  deleteTodo = (todoId) => {
-    this.setState((prevState) => ({
-      todos: prevState.todos.filter((todo) => todo.id !== todoId),
-    }));
-  };
+  // addTodo = (text) => {
+  //   const todo = {
+  //     id: shortid.generate(),
+  //     text,
+  //     completed: false,
+  //   };
 
-  toggleCompleted = (todoId) => {
-    console.log(todoId);
-    this.setState((prevState) => ({
-      todos: prevState.todos.map((todo) => {
-        if (todo.id === todoId) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      }),
-    }));
-  };
+  //   this.setState((prevState) => ({
+  //     todos: [todo, ...prevState.todos],
+  //   }));
+  // };
 
-  changeFilter = (e) => {
-    this.setState({ filter: e.currentTarget.value });
-  };
+  // deleteTodo = (todoId) => {
+  //   this.setState((prevState) => ({
+  //     todos: prevState.todos.filter((todo) => todo.id !== todoId),
+  //   }));
+  // };
+
+  // toggleCompleted = (todoId) => {
+  //   console.log(todoId);
+  //   this.setState((prevState) => ({
+  //     todos: prevState.todos.map((todo) => {
+  //       if (todo.id === todoId) {
+  //         return {
+  //           ...todo,
+  //           completed: !todo.completed,
+  //         };
+  //       }
+  //       return todo;
+  //     }),
+  //   }));
+  // };
+
+  // changeFilter = (e) => {
+  //   this.setState({ filter: e.currentTarget.value });
+  // };
 
   // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  componentDidMount() {
-    const todos = localStorage.getItem("todos");
-    const parsedTodos = JSON.parse(todos);
+  // componentDidMount() {
+  //   const todos = localStorage.getItem("todos");
+  //   const parsedTodos = JSON.parse(todos);
 
-    if (parsedTodos) {
-      this.setState({ todos: parsedTodos });
-    }
-  }
+  //   if (parsedTodos) {
+  //     this.setState({ todos: parsedTodos });
+  //   }
+  // }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.todos !== prevState.todos) {
-    }
-    localStorage.setItem("todos", JSON.stringify(this.state.todos));
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.todos !== prevState.todos) {
+  //   }
+  //   localStorage.setItem("todos", JSON.stringify(this.state.todos));
+  // }
 
   // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // LESSONS 3 HOMEBOOK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   render() {
-    console.log("App render");
-    const { todos, filter } = this.state;
-    const totalTodoCount = todos.length;
+    // console.log("App render");
+    // const { todos, filter } = this.state;
+    // const totalTodoCount = todos.length;
 
-    const completedTodoCount = todos.reduce(
-      (acc, todo) => (todo.completed ? acc + 1 : acc),
-      0
-    );
+    // const completedTodoCount = todos.reduce(
+    //   (acc, todo) => (todo.completed ? acc + 1 : acc),
+    //   0
+    // );
 
-    const normalizedFilter = this.state.filter.toLowerCase();
-    const filterTodos = this.state.todos.filter((todo) =>
-      todo.text.toLowerCase().includes(normalizedFilter)
-    );
+    // const normalizedFilter = this.state.filter.toLowerCase();
+    // const filterTodos = this.state.todos.filter((todo) =>
+    //   todo.text.toLowerCase().includes(normalizedFilter)
+    // );
 
     return (
       <>
@@ -105,7 +117,7 @@ class App extends Component {
         {/* <Counter />
       <DropDown />
       <ColorPicker options={colorPickerOptions} /> */}
-        <TodoEditor onSubmitProp={this.addTodo} />
+        {/* <TodoEditor onSubmitProp={this.addTodo} />
 
         <Filter value={filter} onChange={this.changeFilter} />
 
@@ -121,7 +133,13 @@ class App extends Component {
 
         <LoginForm />
 
-        <Modal />
+        
+        <Modal /> */}
+         <div style={{ padding: 24 }}>
+        <h1>Selected video: {this.state.selectedVideo}</h1>
+        <VideoList videos={videos} onSelect={this.selectVideo} />
+        <Player url={this.state.selectedVideo} />
+      </div>
       </>
     );
   }
